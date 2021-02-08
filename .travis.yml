@@ -28,6 +28,16 @@ jdk:
 matrix:
   allow_failures:
     - jdk: openjdk-ea
+  include:
+    - jdk: openjdk8
+      arch: ppc64le
+      dist: focal
+    - jdk: openjdk11
+      arch: ppc64le
+      dist: focal
+    - jdk: openjdk15
+      arch: ppc64le
+      dist: focal
 
 script:
   - mvn -V --no-transfer-progress
