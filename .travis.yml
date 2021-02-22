@@ -40,8 +40,7 @@ before_install:
     - export PATH=${MAVEN_HOME}/bin:${PATH}
     - |
         if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then
-         export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-ppc64el/";
-	 export PATH="$JAVA_HOME/bin:$PATH";
+         export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-ppc64el/"; export PATH="$JAVA_HOME/bin:$PATH";
         fi
 
 script:
