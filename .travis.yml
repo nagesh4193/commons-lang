@@ -41,8 +41,8 @@ before_install:
     - |
         if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then
          export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-ppc64el/"
-	       export PATH="$JAVA_HOME/bin:$PATH"
-	      fi
+	 export PATH="$JAVA_HOME/bin:$PATH"
+        fi
 
 script:
   - mvn -V --no-transfer-progress
