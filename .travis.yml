@@ -33,15 +33,16 @@ matrix:
   allow_failures:
     - jdk: openjdk-ea
 
-before_install: 
+before_install:
+# For power support architecture ppc64le
+# Manual maven install fixes the issue of Maven version allowed range 3.5.0. or above
+# sed command fixes the error javadoc command and environment variable JAVA_HOME setup
  - |
    if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then
-     # Using the below code for power support architecture as Maven version allowed range is 3.5.0. or above     
      mkdir -p /opt/maven;
      curl https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz|tar -xz --strip 1 -C /opt/maven;
      export MAVEN_HOME=/opt/maven
      export PATH=${MAVEN_HOME}/bin:${PATH}
-     #This fixes the error javadoc command and environment variable JAVA_HOME for power support ppc64le
      sed '/maven.compiler.source/ i <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>' pom.xml > tmp && mv tmp pom.xml;
    fi
 
